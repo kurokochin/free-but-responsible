@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import LineChart from './LineChart';
 import logo from './logo.svg';
 import './Dashboard.css';
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
+
+
 
 export default class App extends Component {
 
@@ -27,6 +31,37 @@ export default class App extends Component {
   // }
 
   render() {
+    const options = [
+      { value: 1, label: 'Daily'},
+      { value: 2, label: 'Monthly'}
+    ];
+
+    const defaultOption = options[0];
+
+    const months = [
+      { value: 1, label: 'January' },
+      { value: 2, label: 'February' },
+      { value: 3, label: 'March' },
+      { value: 4, label: 'April' },
+      { value: 5, label: 'May' },
+      { value: 6, label: 'June' },
+      { value: 7, label: 'July' },
+      { value: 8, label: 'August' },
+      { value: 9, label: 'September' },
+      { value: 10, label: 'October' },
+      { value: 11, label: 'November' },
+      { value: 12, label: 'December' }
+    ];
+
+    const defaultOptionMonths = months[0];
+
+    const optionsYear = [];
+    for (var i = 1970; i <= 2018; i++) {
+      optionsYear.push(i);
+    }
+
+    const defaultOptionYears = optionsYear[0];
+
     return (
       <div>
         <div className="landing-page page">
@@ -49,15 +84,10 @@ export default class App extends Component {
         <div id="visuals" className="visuals page">
           <h1 className="title second">Visuals</h1>
           <div className="admin-panel visualization">
-            <div className="daily-monthly dropdown">
-              Daily
-            </div>
-            <div className="months dropdown">
-              May
-            </div>
-            <div className="years dropdown">
-              2018
-            </div>
+            <Dropdown className="dropdown" options={options} onChange={this._onSelect} value={defaultOption} />
+            <Dropdown className="dropdown" options={months} onChange={this._onSelect} value={defaultOptionMonths} />
+            <Dropdown className="dropdown" options={optionsYear} onChange={this._onSelect} value={defaultOptionYears.toString()} />
+
             <div className="buttons">
               <a className="show-button" href="#">SHOW</a>
             </div>
@@ -78,15 +108,9 @@ export default class App extends Component {
         <div id="lists" className="list page">
           <h1 className="title third">Lists</h1>
           <div className="admin-panel lists">
-            <div className="daily-monthly dropdown">
-              Daily
-            </div>
-            <div className="months dropdown">
-              May
-            </div>
-            <div className="years dropdown">
-              2018
-            </div>
+            <Dropdown className="dropdown" options={options} onChange={this._onSelect} value={defaultOption} />
+            <Dropdown className="dropdown" options={months} onChange={this._onSelect} value={defaultOptionMonths} />
+            <Dropdown className="dropdown" options={optionsYear} onChange={this._onSelect} value={defaultOptionYears.toString()} />
             <div className="buttons">
               <div className="buttons">
                 <a className="show-button" href="#">SHOW</a>
