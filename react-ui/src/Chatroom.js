@@ -17,7 +17,7 @@ class Chatroom extends React.Component {
             username: 'user' + getRandomInt(100000000000),
             chats: [],
         };
-        this.socket = io(process.env.BACKEND_URL + ':5000');
+        this.socket = io('http://free-but-responsible.herokuapp.com:5000');
         this.submitMessage = this.submitMessage.bind(this);
         this.addMessage = this.addMessage.bind(this);
         const that = this;
