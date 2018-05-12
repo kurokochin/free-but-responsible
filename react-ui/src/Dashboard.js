@@ -5,12 +5,30 @@ import './Dashboard.css';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 
-
+const PREFIX_API = 'bad-messages/';
 
 export default class App extends Component {
 
-  // componentDidMount() {
-  //   fetch('/api')
+  constructor(props) {
+    super(props);
+    this.state = {
+      api: 'bad-messages/monthly/1970',
+      stats: [],
+      visuals: {
+        type: 'Monthly',
+        month: 1,
+        year: '1970'
+      },
+      list: {
+        month: 0,
+        year: 0
+      }
+    }
+  }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   const { api } = nextState;
+  //   fetch(api)
   //     .then(response => {
   //       if (!response.ok) {
   //         throw new Error(`status ${response.status}`);
@@ -19,21 +37,120 @@ export default class App extends Component {
   //     })
   //     .then(json => {
   //       this.setState({
-  //         message: json.message,
+  //         stats: json,
   //         fetching: false
   //       });
   //     }).catch(e => {
   //       this.setState({
-  //         message: `API call failed: ${e}`,
+  //         stats: `API call failed: ${e}`,
   //         fetching: false
   //       });
   //     })
   // }
 
+ componentDidMount() {
+  console.log('COMPONENT DID MOUNT===========')
+    const { api } = this.state;
+    fetch(api)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(json => {
+        this.setState({
+          stats: json,
+          fetching: false
+        });
+      }).catch(e => {
+        this.setState({
+          stats: `API call failed: ${e}`,
+          fetching: false
+        });
+      })
+  }
+
+  triggerFetch() {
+    const { api } = this.state;
+    fetch(api)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(json => {
+        this.setState({
+          stats: json,
+          fetching: false
+        });
+      }).catch(e => {
+        this.setState({
+          stats: `API call failed: ${e}`,
+          fetching: false
+        });
+      })
+  }
+
+  getMonth(numMonth) {
+    const months = {
+      '1': 'January',
+      '2': 'February',
+      '3': 'March',
+      '4': 'April',
+      '5': 'May',
+      '6': 'June',
+      '7': 'July',
+      '8': 'August',
+      '9': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December'
+    }
+
+    return months[numMonth];
+  }
+
+  handleChangeVis(opt, val) {
+    let changedVisuals = this.state.visuals;
+    changedVisuals[opt] = val;
+
+    let tempApi = `${PREFIX_API}monthly/${changedVisuals.year}`;
+    if (changedVisuals.type === 'Daily') {
+      tempApi = `${PREFIX_API}daily/${changedVisuals.month}/${changedVisuals.year}`;
+    }
+
+    this.setState({
+      api: tempApi,
+      visuals: changedVisuals,
+    }, () => {
+      fetch(this.state.api)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(json => {
+        this.setState({
+          stats: json,
+          fetching: false
+        });
+      }).catch(e => {
+        this.setState({
+          stats: `API call failed: ${e}`,
+          fetching: false
+        });
+      })
+    })
+  }
+
   render() {
+    console.log('api render', this.state.api)
     const options = [
-      { value: 1, label: 'Daily'},
-      { value: 2, label: 'Monthly'}
+      { label: 'Daily'},
+      { label: 'Monthly'}
     ];
 
     const defaultOption = options[0];
@@ -62,6 +179,10 @@ export default class App extends Component {
 
     const defaultOptionYears = optionsYear[0];
 
+    const { stats } = this.state;
+    const { type, month, year } = this.state.visuals;
+    const sentencedMonth = this.getMonth(month);
+
     return (
       <div>
         <div className="landing-page page">
@@ -84,12 +205,12 @@ export default class App extends Component {
         <div id="visuals" className="visuals page">
           <h1 className="title second">Visuals</h1>
           <div className="admin-panel visualization">
-            <Dropdown className="dropdown" options={options} onChange={this._onSelect} value={defaultOption} />
-            <Dropdown className="dropdown" options={months} onChange={this._onSelect} value={defaultOptionMonths} />
-            <Dropdown className="dropdown" options={optionsYear} onChange={this._onSelect} value={defaultOptionYears.toString()} />
+            <Dropdown className="dropdown" options={options} onChange={(e) => {this.handleChangeVis('type', e.value)}} value={type} />
+            <Dropdown className="dropdown" options={months} onChange={(e) => {this.handleChangeVis('month', e.value)}} value={sentencedMonth} />
+            <Dropdown className="dropdown" options={optionsYear} onChange={(e) => {this.handleChangeVis('year', e.label.toString())}} value={year} />
 
-            <div className="buttons">
-              <a className="show-button" href="#">SHOW</a>
+            <div className="buttons" onClick={() => this.triggerFetch()}>
+              <a className="show-button">SHOW</a>
             </div>
             <div className="buttons">
               <a className="visual-button" href="#visuals">VISUALS</a>
@@ -100,7 +221,7 @@ export default class App extends Component {
           </div>
 
           <div className="visualization panel">
-
+            <LineChart type={type} data={stats} month={month} year={year} />
           </div>
 
         </div>

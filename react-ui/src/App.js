@@ -6,39 +6,39 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
+      message: [],
       fetching: true
     };
   }
 
-  // componentDidMount() {
-  //   fetch('/api')
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(`status ${response.status}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then(json => {
-  //       this.setState({
-  //         message: json.message,
-  //         fetching: false
-  //       });
-  //     }).catch(e => {
-  //       this.setState({
-  //         message: `API call failed: ${e}`,
-  //         fetching: false
-  //       });
-  //     })
-  // }
+  componentDidMount() {
+    fetch('/bad-messages/daily/5/2018')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(json => {
+        console.log('lalala', json)
+        this.setState({
+          message: json,
+          fetching: false
+        });
+      }).catch(e => {
+        this.setState({
+          message: `API call failed: ${e}`,
+          fetching: false
+        });
+      })
+  }
 
   render() {
-    const monthData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56]
-    const dailyData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 81, 56, 55]
+    const data = this.state.message;
     return (
       <div>
         HOME
-        <LineChart type="monthly" data={monthData} month="January" year="2018" />
+        <LineChart type="daily" data={data} month="January" year="2018" />
       </div>
     );
   }
