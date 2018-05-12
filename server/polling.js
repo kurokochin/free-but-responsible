@@ -5,6 +5,7 @@ const Sentiment = require('sentiment');
 const sentiment = new Sentiment();
 const validator = require('validator');
 const badWord = require('./badWords');
+const db = require('./db');
 sentiment.registerLanguage('sex', {
   labels: badWord
 });
