@@ -257,5 +257,6 @@ const badWord = {
 	'yaoi': -5,
 	'yiffy': -5,
 	'zoophilia': -5,
+	'fvck': -5,
 };
 module.exports = badWord;
