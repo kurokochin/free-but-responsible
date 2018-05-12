@@ -160,3 +160,11 @@ label {
 	margin: 0.5rem;
 	border-width: 2px;
 }
+
+.msg-content {
+	margin-bottom: 0.2rem;
+}
+
+.msg-date {
+	font-size: 10px;
+}

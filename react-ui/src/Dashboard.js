@@ -14,6 +14,7 @@ export default class App extends Component {
     this.state = {
       stats: [],
       messages: [],
+      isFetching: false,
       visuals: {
         api: 'bad-messages/monthly/2018',
         type: 'Monthly',
@@ -33,6 +34,9 @@ export default class App extends Component {
     const { api } = this.state.visuals;
     fetch(api)
       .then(response => {
+        this.setState({
+          isFetching: true
+        });
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
@@ -41,17 +45,20 @@ export default class App extends Component {
       .then(json => {
         this.setState({
           stats: json,
-          fetching: false
+          isFetching: false
         });
       }).catch(e => {
         this.setState({
           stats: `API call failed: ${e}`,
-          fetching: false
+          isFetching: false
         });
       })
 
       fetch(this.state.list.api)
       .then(response => {
+        this.setState({
+          isFetching: true
+        });
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
@@ -60,12 +67,12 @@ export default class App extends Component {
       .then(json => {
         this.setState({
           messages: json,
-          fetching: false
+          isFetching: false
         });
       }).catch(e => {
         this.setState({
           messages: `API call failed: ${e}`,
-          fetching: false
+          isFetching: false
         });
       })
   }
@@ -129,6 +136,9 @@ export default class App extends Component {
     }, () => {
       fetch(tempApi)
       .then(response => {
+        this.setState({
+          isFetching: true
+        });
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
@@ -137,12 +147,12 @@ export default class App extends Component {
       .then(json => {
         this.setState({
           stats: json,
-          fetching: false
+          isFetching: false
         });
       }).catch(e => {
         this.setState({
           stats: `API call failed: ${e}`,
-          fetching: false
+          isFetching: false
         });
       })
     })
@@ -160,6 +170,9 @@ export default class App extends Component {
     }, () => {
       fetch(api)
       .then(response => {
+        this.setState({
+          isFetching: true
+        });
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
         }
@@ -168,19 +181,18 @@ export default class App extends Component {
       .then(json => {
         this.setState({
           messages: json,
-          fetching: false
+          isFetching: false
         });
       }).catch(e => {
         this.setState({
           messages: `API call failed: ${e}`,
-          fetching: false
+          isFetching: false
         });
       })
     })
   }
 
   render() {
-    console.log('api render', this.state.api)
     const options = [
       { label: 'Daily'},
       { label: 'Monthly'}
@@ -226,8 +238,6 @@ export default class App extends Component {
     const listDay = this.state.list.day;
     const listMonth = this.getMonth(this.state.list.month);
     const listYear = this.state.list.year;
-
-    console.log('messages', this.state.messages)
 
     return (
       <div>
