@@ -6,6 +6,7 @@
     "react-scripts": "^1.1.0"
   },
   "dependencies": {
+    "@mars/heroku-js-runtime-env": "^3.0.2",
     "chart.js": "^1.1.1",
     "react": "^16.3.2",
     "react-chartjs": "^1.2.0",
