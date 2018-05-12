@@ -30,7 +30,7 @@ export default class App extends Component {
     return (
       <div>
         <div className="landing-page page">
-          <h1 className="title">GCure</h1>
+          <h1 className="title first">GCure</h1>
           <div className="background-layer">
             <div className="color-layer">
 
@@ -47,7 +47,7 @@ export default class App extends Component {
         </div>
 
         <div id="visuals" className="visuals page">
-
+          <h1 className="title second">Visuals</h1>
           <div className="admin-panel visualization">
             <div className="daily-monthly dropdown">
               Daily
@@ -57,6 +57,9 @@ export default class App extends Component {
             </div>
             <div className="years dropdown">
               2018
+            </div>
+            <div className="buttons">
+              <a className="show-button" href="#">SHOW</a>
             </div>
             <div className="buttons">
               <a className="visual-button" href="#visuals">VISUALS</a>
@@ -73,7 +76,7 @@ export default class App extends Component {
         </div>
 
         <div id="lists" className="list page">
-
+          <h1 className="title third">Lists</h1>
           <div className="admin-panel lists">
             <div className="daily-monthly dropdown">
               Daily
@@ -85,6 +88,9 @@ export default class App extends Component {
               2018
             </div>
             <div className="buttons">
+              <div className="buttons">
+                <a className="show-button" href="#">SHOW</a>
+              </div>
               <a className="visual-button" href="#visuals">VISUALS</a>
             </div>
             <div className="buttons">
