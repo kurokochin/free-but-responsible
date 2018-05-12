@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LineChart from './LineChart';
 import logo from './logo.svg';
 import './App.css';
+import Chatroom from './Chatroom.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -38,24 +39,7 @@ export default class App extends Component {
     const dailyData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 81, 56, 55]
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
-        <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-        </p>
-
-        <LineChart type="monthly" data={monthData} month="" year="2018" />
-        <LineChart type="daily" data={dailyData} month="January" year="2018" />
+        <Chatroom />
       </div>
     );
   }
