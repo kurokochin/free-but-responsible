@@ -39,8 +39,8 @@ export default class LineChart extends Component {
       datasets: [
         {
           label: "Chart",
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
+          fillColor: "#fff",
+          strokeColor: "#fff",
           pointColor: "rgba(151,187,205,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",

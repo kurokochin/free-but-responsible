@@ -155,6 +155,13 @@ export default class App extends Component {
 
     const defaultOption = options[0];
 
+    const dateOptions = [];
+    for (var i = 1; i <= 31; i++) {
+      dateOptions.push(i);
+    }
+
+    const defaultOptionDate = dateOptions[0];
+
     const months = [
       { value: 1, label: 'January' },
       { value: 2, label: 'February' },
@@ -209,9 +216,7 @@ export default class App extends Component {
             <Dropdown className="dropdown" options={months} onChange={(e) => {this.handleChangeVis('month', e.value)}} value={sentencedMonth} />
             <Dropdown className="dropdown" options={optionsYear} onChange={(e) => {this.handleChangeVis('year', e.label.toString())}} value={year} />
 
-            <div className="buttons" onClick={() => this.triggerFetch()}>
-              <a className="show-button">SHOW</a>
-            </div>
+            
             <div className="buttons">
               <a className="visual-button" href="#visuals">VISUALS</a>
             </div>
@@ -229,13 +234,10 @@ export default class App extends Component {
         <div id="lists" className="list page">
           <h1 className="title third">Lists</h1>
           <div className="admin-panel lists">
-            <Dropdown className="dropdown" options={options} onChange={this._onSelect} value={defaultOption} />
+            <Dropdown className="dropdown" options={dateOptions} onChange={this._onSelect} value={defaultOptionDate.toString()} />
             <Dropdown className="dropdown" options={months} onChange={this._onSelect} value={defaultOptionMonths} />
             <Dropdown className="dropdown" options={optionsYear} onChange={this._onSelect} value={defaultOptionYears.toString()} />
             <div className="buttons">
-              <div className="buttons">
-                <a className="show-button" href="#">SHOW</a>
-              </div>
               <a className="visual-button" href="#visuals">VISUALS</a>
             </div>
             <div className="buttons">
