@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const BadMessage = require('./models/BadMessage');
-const token = '578739332:AAG-iXHYs1Qpbw_IwLR00ZcaugbtNOh33aE';
+const token = process.env.TELEGRAM_API_KEY;
 const Sentiment = require('sentiment');
 const sentiment = new Sentiment();
 const validator = require('validator');
