@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ReactChart from 'react-chartjs';
+import LineChart from './LineChart';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,32 +34,8 @@ class App extends Component {
   // }
 
   render() {
-    const LineChart = ReactChart.Line;
-    const data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      datasets: [
-        {
-          label: "My First dataset",
-          fillColor: "rgba(220,220,220,0.2)",
-          strokeColor: "rgba(220,220,220,1)",
-          pointColor: "rgba(220,220,220,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [90, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: "My Second dataset",
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
-    };
+    const monthData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56]
+    const dailyData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 81, 56, 55]
     return (
       <div className="App">
         <div className="App-header">
@@ -78,14 +54,9 @@ class App extends Component {
             : this.state.message}
         </p>
 
-        <div>
-        asd
-        </div>
-
-        <LineChart data={data} width="600" height="250" />
+        <LineChart type="monthly" data={monthData} month="" year="2018" />
+        <LineChart type="daily" data={dailyData} month="January" year="2018" />
       </div>
     );
   }
 }
-
-export default App;
