@@ -4,7 +4,6 @@ import './Chatroom.css';
 
 import Message from './Message.js';
 import io from "socket.io-client";
-import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 
 function getRandomInt(max) {
@@ -19,8 +18,7 @@ class Chatroom extends React.Component {
             username: 'user' + getRandomInt(100000000000),
             chats: [],
         };
-        const env = runtimeEnv();
-        this.socket = io(process.env.REACT_APP_BACKEND_URL + ':' + env.PORT);
+        this.socket = io(process.env.REACT_APP_BACKEND_URL);
         this.submitMessage = this.submitMessage.bind(this);
         this.addMessage = this.addMessage.bind(this);
         const that = this;
