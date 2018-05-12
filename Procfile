@@ -1,2 +1,2 @@
 web: npm start
-worker: node polling.js
+worker: node server/polling.js
