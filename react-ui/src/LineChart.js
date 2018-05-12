@@ -30,7 +30,10 @@ export default class LineChart extends Component {
     const arrDay = Array.apply(null, {length: 32}).map(Number.call, Number).slice(1);
     const arrMonth = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     const labels = type === 'Daily' ? arrDay : arrMonth;
+
     const title = type === 'Daily' ? 'Daily Chat Data' : 'Monthly Chat Data';
+    const date = type === 'Monthly' ? year : alphabetMonth + ' ' + year;
+
     const chartData = {
       labels: labels,
       datasets: [
@@ -50,7 +53,7 @@ export default class LineChart extends Component {
     return (
       <div>
         <h1>{title}</h1>
-        <h2>{alphabetMonth + ' ' + year}</h2>
+        <h2>{date}</h2>
         <LineChart data={chartData} width="600" height="250" redraw />
       </div>
     );
