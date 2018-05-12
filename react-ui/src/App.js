@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import LineChart from './LineChart';
 import logo from './logo.svg';
-import './App.css';
-import Chatroom from './Chatroom.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -38,8 +36,9 @@ export default class App extends Component {
     const monthData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56]
     const dailyData = [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 81, 56, 55]
     return (
-      <div className="App">
-        <Chatroom />
+      <div>
+        HOME
+        <LineChart type="monthly" data={monthData} month="January" year="2018" />
       </div>
     );
   }

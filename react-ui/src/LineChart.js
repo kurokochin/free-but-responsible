@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactChart from 'react-chartjs';
 import logo from './logo.svg';
-import './App.css';
 
 export default class LineChart extends Component {
 

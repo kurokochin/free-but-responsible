@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import './Chatroom.css';
 
 import Message from './Message.js';
 import io from "socket.io-client";
@@ -64,15 +64,17 @@ class Chatroom extends React.Component {
             <Message chat={chat} user={username} key={key} />
         );
         return (
-            <div className="chatroom">
-                <h3>Chilltime</h3>
-                <ul className="chats" ref="chats">
-                    {chatMessages}
-                </ul>
-                <form className="input" onSubmit={(e) => this.submitMessage(e)}>
-                    <input type="text" ref="msg" />
-                    <input type="submit" value="Submit" />
-                </form>
+            <div className="App">
+                <div className="chatroom">
+                    <h3>Chilltime</h3>
+                    <ul className="chats" ref="chats">
+                        {chatMessages}
+                    </ul>
+                    <form className="input" onSubmit={(e) => this.submitMessage(e)}>
+                        <input type="text" ref="msg" />
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
             </div>
         );
     }

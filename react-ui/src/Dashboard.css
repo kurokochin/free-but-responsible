@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700i');
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Lato', sans-serif;
+}
+
+.title {
+	font-weight: 700;
+	font-style: italic;
+	color: #4F86F7;
+	font-size: 3rem;
+}
+
+.page {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+}
+
+.background-layer {
+	background-image: url('http://sellfapp.com/wp-content/uploads/2017/03/team.jpg');
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	width: 80%;
+	height: 70%;
+	border-radius: 30px;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-40%);
+}
+
+.color-layer {
+	background-color: #4F86F7;
+	opacity: 0.9;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+	text-align: center;
+	color: #fff;
+	font-style: italic;
+}
+
+.welcome-text {
+	position: relative;
+	font-size: 7rem;
+	font-weight: 700;
+}
+
+.other-text {
+	position: relative;
+	font-size: 2rem;
+	top: -10%;
+}
+
+.start {
+	position: absolute;
+	bottom: 9%;
+	color: #4F86F7;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 2rem;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.admin-panel {
+	position: absolute;
+	height: 70%;
+	width: 15%;
+	border-radius: 30px;
+	text-align: center;
+	color: #fff;
+	top: 50%;
+	left: 10%;
+	transform: translate(-10%,-50%);
+}
+
+.panel {
+	position: absolute;
+	height: 70%;
+	width: 65%;
+	border-radius: 30px;
+	text-align: center;
+	color: #fff;
+	top: 50%;
+	right: 25%;
+	transform: translate(25%,-50%);
+}
+
+.visualization {
+	background-color: #DA2C43;
+}
+
+.lists {
+	background-color: #E667CE;
+}
+
+.dropdown {
+	position: relative;
+	top: 10%;
+	font-size: 1.5rem;
+	padding: 0.5rem;
+	border: 3px #fff solid;
+	border-radius: 20px;
+	width: 70%;
+	margin: 1rem auto;
+}
+
+.buttons {
+	position: relative;
+	top: 10%;
+	margin: 2rem auto;
+	font-size: 1.5rem;
+}
+
+.list-button, .visual-button {
+	text-decoration: none;
+	color: #fff;
+}
+
