@@ -17,7 +17,7 @@ bot.on('message', (msg) => {
     var resultEnglish = sentiment.analyze(msg.text).score;
     if (resultEnglish < 0 || resultSexualHarrasment < 0) {
       BadMessage.create({
-          from: validator.escape(msg.from.username),
+          from: msg.from.username,
           content: validator.escape(msg.text)
       });
       bot.sendMessage(chatId, 'I think that was inappropriate, please behave!');
