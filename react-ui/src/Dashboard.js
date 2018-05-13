@@ -290,7 +290,7 @@ export default class App extends Component {
               <a className="visual-button" href="#visuals">VISUALS</a>
             </div>
             <div className="buttons">
-              <a className="list-button" href="#lists">LISTS</a>
+              <a className="list-button" href="#lists">LIST CHAT BERINTENSI BURUK</a>
             </div>
           </div>
 
