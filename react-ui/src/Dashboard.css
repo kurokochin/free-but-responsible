@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700i');
 
-body {
+.container {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	max-width: 100%;
+    overflow-x: hidden;
 	font-family: 'Lato', sans-serif;
 }
 
@@ -111,7 +113,6 @@ body {
 	top: 50%;
 	right: 35%;
 	transform: translate(35%,-50%);
-	overflow: auto;
 }
 
 .visualization {

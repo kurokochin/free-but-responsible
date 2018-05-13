@@ -242,7 +242,7 @@ export default class App extends Component {
     const listYear = this.state.list.year;
 
     return (
-      <div>
+      <div className="container">
         <div className="landing-page page">
           <h1 className="title first">GCure</h1>
           <div className="background-layer">
