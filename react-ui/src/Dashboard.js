@@ -281,7 +281,7 @@ export default class App extends Component {
         </div>
 
         <div id="lists" className="list page">
-          <h1 className="title third">Lists</h1>
+          <h1 className="title third">LIST CHAT BERINTENSI BURUK</h1>
           <div className="admin-panel lists">
             <Dropdown className="dropdown" options={dateOptions} onChange={(evt) => this.handleChangeList('day', evt.label.toString())} value={listDay} />
             <Dropdown className="dropdown" options={months} onChange={(evt) => this.handleChangeList('month', evt.value)} value={listMonth} />
@@ -290,7 +290,7 @@ export default class App extends Component {
               <a className="visual-button" href="#visuals">VISUALS</a>
             </div>
             <div className="buttons">
-              <a className="list-button" href="#lists">LIST CHAT BERINTENSI BURUK</a>
+              <a className="list-button" href="#lists">LISTS</a>
             </div>
           </div>
 
