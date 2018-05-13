@@ -31,7 +31,7 @@ export default class LineChart extends Component {
     const arrMonth = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     const labels = type === 'Daily' ? arrDay : arrMonth;
 
-    const title = type === 'Daily' ? 'Daily Chat Data' : 'Monthly Chat Data';
+    const title = type === 'Daily' ? 'Data Harian Chat Berintensi Buruk' : 'Data Bulanan Chat Berintensi Buruk';
     const date = type === 'Monthly' ? year : alphabetMonth + ' ' + year;
 
     const chartData = {
