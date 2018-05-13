@@ -67,7 +67,7 @@ class Chatroom extends React.Component {
         return (
             <div className="App">
                 <div className="chatroom">
-                    <h3>Chilltime</h3>
+                    <h3>Gcure Chat</h3>
                     <ul className="chats" ref="chats">
                         {chatMessages}
                     </ul>
