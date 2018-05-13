@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './Dashboard.css';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
+import Loading from 'react-loading-animation';
 
 const PREFIX_API = 'bad-messages/';
 
@@ -15,6 +16,7 @@ export default class App extends Component {
       stats: [],
       messages: [],
       isFetching: false,
+      isFetchingList: false,
       visuals: {
         api: 'bad-messages/monthly/2018',
         type: 'Monthly',
@@ -57,7 +59,7 @@ export default class App extends Component {
       fetch(this.state.list.api)
       .then(response => {
         this.setState({
-          isFetching: true
+          isFetchingList: true
         });
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
@@ -67,12 +69,12 @@ export default class App extends Component {
       .then(json => {
         this.setState({
           messages: json,
-          isFetching: false
+          isFetchingList: false
         });
       }).catch(e => {
         this.setState({
           messages: `API call failed: ${e}`,
-          isFetching: false
+          isFetchingList: false
         });
       })
   }
@@ -270,7 +272,10 @@ export default class App extends Component {
           </div>
 
           <div className="visualization panel">
-            <LineChart type={type} data={stats} month={month} year={year} />
+            {
+              this.state.isFetching ? <Loading /> :
+              <LineChart type={type} data={stats} month={month} year={year} />
+            }
           </div>
 
         </div>
@@ -290,7 +295,7 @@ export default class App extends Component {
           </div>
 
           <div className="lists panel">
-            {this.renderMessageCard()}
+            {this.state.isFetchingList ? <Loading /> : this.renderMessageCard()}
           </div>
 
         </div>
